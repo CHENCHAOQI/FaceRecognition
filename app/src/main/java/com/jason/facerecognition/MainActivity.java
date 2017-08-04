@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
 
 import com.flurgle.camerakit.CameraListener;
 import com.flurgle.camerakit.CameraView;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
     private Executor executor = Executors.newSingleThreadExecutor();
     private TextView textViewResult;
-    private Button btnGetFace, btnToggleCamera;
+    private Button btnGetFace, btnToggleCamera, btnGetInto;
     private ImageView face1Result,face2Result;
     private CameraView cameraView;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Classifier.Recognition> mface2=null;
 
     private int isGettingface=0;
+    private double facedifference=1;
     private Bitmap bitmap;
 
     @Override
@@ -97,7 +99,15 @@ public class MainActivity extends AppCompatActivity {
                     mface2=null;
                 }
 
-                if(null!=mface1 && null!=mface2)textViewResult.setText(String.valueOf(compareFace()));
+                if(null!=mface1 && null!=mface2){
+                    facedifference=compareFace();
+                    //textViewResult.setText(String.valueOf(facedifference));
+                    if(facedifference<0.4){
+                        makeButton2Visible();
+                        textViewResult.setText(String.valueOf(facedifference));
+
+                    }
+                }
             }
         });
 
@@ -115,7 +125,14 @@ public class MainActivity extends AppCompatActivity {
                 cameraView.captureImage();
             }
         });
-
+        btnGetInto.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(intent);
+                MainActivity.this.finish();
+            }
+        });
         initTensorFlowAndLoadModel();
     }
 
@@ -127,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnToggleCamera = (Button) findViewById(R.id.btnToggleCamera);
         btnGetFace = (Button) findViewById(R.id.btnGetFace);
+        btnGetInto = (Button) findViewById(R.id.btnGetInto);
     }
 
     @Override
@@ -182,7 +200,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void makeButton2Visible() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                btnGetInto.setVisibility(View.VISIBLE);
+            }
+        });
+    }
     private double compareFace(){
         double runSum=0;
         if(null!=mface1 && null!=mface2) {

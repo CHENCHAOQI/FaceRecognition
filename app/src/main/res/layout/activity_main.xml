@@ -65,6 +65,18 @@
 
 
     <Button
+        android:id="@+id/btnGetInto"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="100dp"
+
+        android:text="Get Into"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btnToggleCamera"
         android:layout_width="match_parent"
         android:layout_height="48dp"
