@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+ *    Copyright (C) 2017 MINDORKS PRIVATE LIMITED
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.mindorks.tensorflowexample"
+        applicationId "com.jason.tensorflowexample"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
