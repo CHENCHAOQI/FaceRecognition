@@ -14,23 +14,37 @@
   ~    limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mindorks.tensorflowexample">
+    package="com.jason.facerecognition">\
+    <!-- 清单权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 调用硬件相机权限 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
+        android:name=".data.Global"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/face_dect"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.jason.facerecognition.MainActivity">
+        android:theme="@style/FullscreenTheme">
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.jason.facerecognition.Main2Activity"></activity>
+
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.Main2Activity" />
+        <activity android:name=".activity.Main3Activity" />
     </application>
 
 </manifest>

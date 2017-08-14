@@ -15,7 +15,12 @@
   -->
 
 <resources>
-    <string name="app_name">FaceRecognition</string>
-    <string name="toggle_camera">Toggle Camera</string>
-    <string name="get_face">Get Face</string>
+    <string name="app_name">人脸识别</string>
+    <string name="toggle">切换镜头</string>
+    <string name="get_face">拍一张照</string>
+    <string name="usr_in">录入用户</string>
+    <string name="usr_delete">删除用户</string>
+    <string name="usr_complete">完成保存</string>
+    <string name="back">返回</string>
+    <string name="version_name">1.1</string>
 </resources>
